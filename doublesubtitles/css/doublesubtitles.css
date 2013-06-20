@@ -1,0 +1,17 @@
+#mep-double-subtitles {
+	margin: 20px 0;
+}
+
+#mep-double-subtitles div {
+	padding: 5px;
+	margin-bottom: 5px;
+	background-color: #f1f1f1;
+	font-size: 21px;
+	line-height: 33px;
+	width: 100%;
+}
+
+span.hover {
+	background-color: #fff;
+	cursor: pointer;
+}
