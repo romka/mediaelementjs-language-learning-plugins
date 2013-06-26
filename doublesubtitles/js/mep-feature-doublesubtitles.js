@@ -2,6 +2,9 @@
   $.extend(MediaElementPlayer.prototype, {
     builddoublesubtitles: function(player, controls, layers, media) {
       var t = this;
+      
+      // Empty placeholder for "tracks" button. It's necessary for core enableTrackButton() function.
+      player.captionsButton = $('').appendTo(controls);
 
       subtitlesoriginal = '<div id="mep-original-subtitles">original subtitles</div>';
       subtitlestranslated = '<div id="mep-translated-subtitles">translated subtitles</div>'
@@ -23,6 +26,11 @@
       t.subtitlestranslated = subtitlestranslated;
 
       t.current_subtitle = -1;
+      
+      player.trackToLoad = -1;
+			player.selectedTrack = null;
+			player.isLoadingTrack = false;
+      player.loadNextTrack();
     },
 
     displayCaptions: function() {
