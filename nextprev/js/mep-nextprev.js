@@ -2,7 +2,8 @@
 	
 	$.extend(mejs.MepDefaults, {
 		nextText: 'Next',
-		prevText: 'Prev'
+		prevText: 'Prev',
+		repeatText: 'Repeat'
 	});
 
 	
@@ -11,7 +12,7 @@
 		buildnext: function(player, controls, layers, media) {
 			var 
 				t = this,
-				play = 
+				button_next = 
 				$('<div class="mejs-button mejs-next-button" >' +
 					'<button type="button" aria-controls="' + t.id + '" title="' + t.options.nextText + '" aria-label="' + t.options.nextText + '"></button>' +
 				'</div>')
@@ -23,13 +24,15 @@
 					
 					return false;
 				});
+				
+				t.repeatCurrent = false;
 
 		},
 		
 		buildprev: function(player, controls, layers, media) {
 			var 
 				t = this,
-				play = 
+				button_prev = 
 				$('<div class="mejs-button mejs-prev-button" >' +
 					'<button type="button" aria-controls="' + t.id + '" title="' + t.options.prevText + '" aria-label="' + t.options.prevText + '"></button>' +
 				'</div>')
@@ -41,6 +44,46 @@
 					
 					return false;
 				});
+
+		},
+		
+		buildrepeat: function(player, controls, layers, media) {
+			var 
+				t = this,
+				button_repeat = 
+				$('<div class="mejs-button mejs-repeat-button repeat-off" >' +
+					'<button type="button" aria-controls="' + t.id + '" title="' + t.options.repeatText + '" aria-label="' + t.options.repeatText + '"></button>' +
+				'</div>')
+				.appendTo(controls)
+				.click(function(e) {
+					e.preventDefault();
+				
+					t.repeatCurrent = !t.repeatCurrent;
+					
+					if (t.repeatCurrent) {
+						var cs = t.current_subtitle;
+						t.repeatable_subtitle = cs;
+						button_repeat.removeClass('repeat-off').addClass('repeat-on');
+					}
+					else {
+						button_repeat.removeClass('repeat-on').addClass('repeat-off');
+					}
+					
+					console.log('Repeat ' + t.repeatCurrent);
+					
+					return false;
+				});
+				
+				t.media.addEventListener('timeupdate', function(e) {
+	        if (t.repeatCurrent) {
+	        	// console.log('repeat ON ' + t.repeatable_subtitle);
+	        	var ct = t.media.currentTime;
+	        	if (ct > player.tracks[0]['entries']['times'][t.repeatable_subtitle]['stop']) {
+	        		t.media.setCurrentTime(player.tracks[0]['entries']['times'][t.repeatable_subtitle]['start']);
+	        	}
+	        	//console.log('current time = ' + ct + '; stop time = ' + player.tracks[0]['entries']['times'][t.repeatable_subtitle]['stop']);
+	        }
+	      }, false);
 
 		},
 		

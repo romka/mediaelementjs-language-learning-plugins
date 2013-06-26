@@ -58,10 +58,10 @@
                 if (newTime >= player.tracks[subtitles]['entries']['times'][i]['start'] && newTime < player.tracks[subtitles]['entries']['times'][i]['stop']) {
                   // newTime = player.tracks[subtitles]['entries']['times'][i]['start'] + 0.1;
                   newTime = player.tracks[subtitles]['entries']['times'][i]['start'];
-                  console.log('*****************');
-                  console.log('Click on progress bar');
-                  console.log('New subtitle ' + i);
-                  console.log('New time ' + player.tracks[subtitles]['entries']['times'][i]['start']);
+                  //console.log('*****************');
+                  //console.log('Click on progress bar');
+                  //console.log('New subtitle ' + i);
+                  //console.log('New time ' + player.tracks[subtitles]['entries']['times'][i]['start']);
                   break;
                 }
               }
