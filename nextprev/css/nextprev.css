@@ -1,18 +1,23 @@
 .mejs-controls .mejs-next-button button {
-	background-position: -96px -32px;
+	background-position: -108px -32px;
 }
 
 .mejs-controls .mejs-prev-button button {
-	background-position: -192px -32px;
+	background-position: -204px -32px;
 	width: 22px;
 }
 
 .mejs-controls .mejs-repeat-button.repeat-off button {
-	background-position: -224px -32px;
+	background-position: -236px -32px;
 	width: 22px;
 }
 
 .mejs-controls .mejs-repeat-button.repeat-on button {
-	background-position: -256px -32px;
+	background-position: -268px -32px;
 	width: 22px;
+}
+
+.mejs-progress-subtitle.repeated {
+	background: transparent url(../../trackprogress/css/big-controls.png) no-repeat;
+	background-position: -224px -32px;
 }

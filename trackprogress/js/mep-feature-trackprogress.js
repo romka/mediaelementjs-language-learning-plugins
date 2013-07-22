@@ -58,6 +58,11 @@
                 if (newTime >= player.tracks[subtitles]['entries']['times'][i]['start'] && newTime < player.tracks[subtitles]['entries']['times'][i]['stop']) {
                   // newTime = player.tracks[subtitles]['entries']['times'][i]['start'] + 0.1;
                   newTime = player.tracks[subtitles]['entries']['times'][i]['start'];
+					        if (t.repeatCurrent) {
+					        	t.unmarkAsRepeatable(t.repeatable_subtitle);
+					      		t.repeatable_subtitle = i;
+					      		t.markAsRepeatable(t.repeatable_subtitle);
+					      	}
                   //console.log('*****************');
                   //console.log('Click on progress bar');
                   //console.log('New subtitle ' + i);
@@ -249,7 +254,7 @@
                 class_name = 'mejs-progress-subtitle-first';
               }
       
-              internal_tracks += '<span class="' + class_name + '" style="width: ' + (current_width) + 'px; left: ' + offset_left + 'px;"></span>';
+              internal_tracks += '<span class="' + class_name + '" style="width: ' + (current_width - 2) + 'px; left: ' + offset_left + 'px;" id="ps-' + i + '"></span>';
               
               offset_left += current_width;
               //subtitle_blocks.push(offset_left);

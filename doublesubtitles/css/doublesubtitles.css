@@ -2,16 +2,34 @@
 	margin: 20px 0;
 }
 
-#mep-double-subtitles div {
+#mep-double-subtitles div.data {
 	padding: 5px;
 	margin-bottom: 5px;
 	background-color: #f1f1f1;
 	font-size: 21px;
 	line-height: 33px;
 	width: 100%;
+	min-height: 20px;
+	min-width: 300px;
 }
 
-span.hover {
+#mep-double-subtitles div.data span.hover {
 	background-color: #fff;
 	cursor: pointer;
+}
+
+#mep-hide-original-subtitles span, #mep-hide-translated-subtitles span {
+	cursor: pointer;
+}
+
+#mep-hide-original-subtitles, #mep-hide-translated-subtitles {
+	font-size: 10px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 5px 5px 0 0;
+}
+
+#mep-hide-original-subtitles span.show, #mep-hide-translated-subtitles span.show {
+	display: none;
 }

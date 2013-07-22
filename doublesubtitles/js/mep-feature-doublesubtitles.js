@@ -6,12 +6,19 @@
       // Empty placeholder for "tracks" button. It's necessary for core enableTrackButton() function.
       player.captionsButton = $('').appendTo(controls);
 
-      subtitlesoriginal = '<div id="mep-original-subtitles">original subtitles</div>';
-      subtitlestranslated = '<div id="mep-translated-subtitles">translated subtitles</div>'
+			hide_original = '<div id="mep-hide-original-subtitles"><span class="hide">hide</span><span class="show">show original subtitles</span></div>';
+      subtitlesoriginal = '<div id="mep-original-subtitles" class="data">original subtitles</div>';
+      
+      hide_translated = '<div id="mep-hide-translated-subtitles"><span class="hide">hide</span><span class="show">show translated subtitles</span></div>';
+      subtitlestranslated = '<div id="mep-translated-subtitles" class="data">translated subtitles</div>'
 
-      subtitleslayer = '<div id="mep-double-subtitles" style="position: absolute; top: ' + t.container[0].clientHeight + 'px;">' +
+      subtitleslayer = '<div id="mep-double-subtitles" style="position: absolute; top: ' + t.container[0].clientHeight + 'px;"><div style="position: relative;">' +
         subtitlesoriginal +
+        hide_original +
+        '</div><div style="position: relative;">' + 
         subtitlestranslated +
+        hide_translated +
+        '</div>' +
       '</div>';
 
       $(subtitleslayer).appendTo(t.container);
@@ -22,6 +29,8 @@
 
       subtitlesoriginal = t.container.find('#mep-original-subtitles'),
       subtitlestranslated = t.container.find('#mep-translated-subtitles'),
+      hide_original = t.container.find('#mep-hide-original-subtitles'),
+      hide_translated = t.container.find('#mep-hide-translated-subtitles'),
       t.subtitlesoriginal = subtitlesoriginal;
       t.subtitlestranslated = subtitlestranslated;
 
@@ -31,6 +40,27 @@
 			player.selectedTrack = null;
 			player.isLoadingTrack = false;
       player.loadNextTrack();
+      
+      
+      subtitlesoriginal.width((t.width - 10) + 'px');
+      subtitlestranslated.width((t.width - 10) + 'px');
+      
+      t.is_original_hide = false;
+      t.is_translated_hide = false;
+      
+      hide_original.click(function(e) {
+					$('#mep-hide-original-subtitles .hide').toggle();
+					$('#mep-hide-original-subtitles .show').toggle();
+					t.is_original_hide = !t.is_original_hide;
+					$('#mep-original-subtitles span').toggle();
+			});
+			
+			hide_translated.click(function(e) {
+					$('#mep-hide-translated-subtitles .hide').toggle();
+					$('#mep-hide-translated-subtitles .show').toggle();
+					t.is_translated_hide = !t.is_translated_hide;
+					$('#mep-translated-subtitles span').toggle();
+			});
     },
 
     displayCaptions: function() {
@@ -72,6 +102,14 @@
               
               // fire event
               t.container.trigger('subtitle_after_update', t.current_subtitle);
+              
+              if (t.is_original_hide) {
+              	$('#mep-original-subtitles span').toggle();
+              }
+              
+              if (t.is_translated_hide) {
+              	$('#mep-translated-subtitles span').toggle();
+              }
               
               return; // exit out if one is visible;
             }
