@@ -1,0 +1,25 @@
+/* Start: Time (current / duration) */
+.mejs-container .mejs-controls .mejs-timeandcaption {
+	color: #fff;
+	display: block;
+	height: 32px;
+	width: 48px;
+	padding: 8px 3px 0 3px ;
+	overflow: hidden;
+	text-align: center;
+	padding: auto 4px;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+.mejs-container .mejs-controls .mejs-timeandcaption span {
+	font-size: 11px;
+	color: #fff;
+	line-height: 12px;
+	display: block;
+	float: left;
+	margin: 1px 2px 0 0;
+	width: 100%;
+}
+
+/* End: Time (current / duration) */

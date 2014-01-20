@@ -1,0 +1,25 @@
+#current-speed {
+	color: #fff;
+	padding-top: 18px;
+	width: 27px;
+	text-align: center;
+}
+
+.mejs-speed-up-button button {
+	margin-left: 0 !important;
+	background: none !important;
+}
+
+.mejs-speed-down-button button {
+	margin-right: 0 !important;
+	background: none !important;
+}
+
+#button-speed-down, #button-speed-up {
+	color: #fff;
+	cursor: pointer;
+	padding: 16px 0 0 6px;
+	font-size: 18px;
+	width: 5px;
+	height: 5px;
+}
