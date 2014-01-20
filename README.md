@@ -3,7 +3,7 @@ Mediaelementjs language learning plugins
 
 A set of plugins for MediaElement (https://github.com/johndyer/mediaelement/) providing tools for language learning sites. The main aim of this project is to create a video player with the same (or better) features as Yabla player (http://www.yabla.com/).
 
-All plugins are based on MediaelEment core plugins.
+All plugins are based on MediaElement core plugins.
 
 * Trackprogress - advanced progressbar which allows to navigate through the timeline by blocks, where every block is a  sentence retrieved from subtitles.
 * Nextprev - navigation between sentences.
